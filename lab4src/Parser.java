@@ -387,7 +387,7 @@ final static String yyrule[] = {
 "arg_list : expression",
 };
 
-//#line 552 "cminus.y"
+//#line 550 "cminus.y"
 
 /* reference to the lexer object */
 private static Yylex lexer;
@@ -867,8 +867,6 @@ case 37:
 								}
 						}
 					}
-					/* for(int i=0;i<scope;i++)*/
-					/* 	symtab.incScope();*/
 					symtab.setScope(scope);
 					/*checking under scoop*/
 					if(FAIL==1 )
@@ -881,7 +879,7 @@ case 37:
 			}
 break;
 case 38:
-//#line 296 "cminus.y"
+//#line 294 "cminus.y"
 {
 				/* fix scope checks*/
 					String name = val_peek(6).sval;
@@ -918,7 +916,7 @@ case 38:
 			}
 break;
 case 39:
-//#line 333 "cminus.y"
+//#line 331 "cminus.y"
 {
 					String label = GenCode.getLabel(); /* for false condition*/
 					yyval = new ParserVal(label); /* becomes $5 below*/
@@ -926,7 +924,7 @@ case 39:
 			}
 break;
 case 40:
-//#line 339 "cminus.y"
+//#line 337 "cminus.y"
 {
 					String label = GenCode.getLabel();
 					yyval = new ParserVal(label); /* becomes $7*/
@@ -934,7 +932,7 @@ case 40:
 			}
 break;
 case 41:
-//#line 345 "cminus.y"
+//#line 343 "cminus.y"
 {
 					/* handle the false condition*/
 					String label = val_peek(3).sval;
@@ -942,26 +940,26 @@ case 41:
 			}
 break;
 case 42:
-//#line 351 "cminus.y"
+//#line 349 "cminus.y"
 {
 					String label2 = val_peek(3).sval;
 					GenCode.genLabel(label2);
 			}
 break;
 case 44:
-//#line 361 "cminus.y"
+//#line 359 "cminus.y"
 {
 					GenCode.genBeginPrint();
 				}
 break;
 case 45:
-//#line 365 "cminus.y"
+//#line 363 "cminus.y"
 {
 					GenCode.genEndPrint();
 				}
 break;
 case 46:
-//#line 369 "cminus.y"
+//#line 367 "cminus.y"
 {
 				String name = val_peek(5).sval;
 				int FAIL=0;int PASS=0;
@@ -997,20 +995,20 @@ case 46:
 			}
 break;
 case 47:
-//#line 405 "cminus.y"
+//#line 403 "cminus.y"
 {
 
 				GenCode.genReturn();
 			}
 break;
 case 48:
-//#line 410 "cminus.y"
+//#line 408 "cminus.y"
 {
 				GenCode.genIReturn();
 			}
 break;
 case 49:
-//#line 416 "cminus.y"
+//#line 414 "cminus.y"
 {
 					int relop = val_peek(1).ival;
 					GenCode.genRelOper(relop);
@@ -1018,15 +1016,15 @@ case 49:
 				}
 break;
 case 57:
-//#line 432 "cminus.y"
+//#line 430 "cminus.y"
 {GenCode.genArithOper(val_peek(1).ival);}
 break;
 case 61:
-//#line 440 "cminus.y"
+//#line 438 "cminus.y"
 {GenCode.genArithOper(val_peek(1).ival);}
 break;
 case 66:
-//#line 449 "cminus.y"
+//#line 447 "cminus.y"
 {
 				String name = val_peek(0).sval;
 				int scope = symtab.getScope();
@@ -1067,7 +1065,7 @@ case 66:
 				}
 break;
 case 67:
-//#line 488 "cminus.y"
+//#line 486 "cminus.y"
 {
 				String name = val_peek(3).sval;
 				int scope = symtab.getScope();
@@ -1101,11 +1099,11 @@ case 67:
 				}
 break;
 case 69:
-//#line 520 "cminus.y"
+//#line 518 "cminus.y"
 {GenCode.genLoadConst(val_peek(0).ival);}
 break;
 case 70:
-//#line 523 "cminus.y"
+//#line 521 "cminus.y"
 {
 				String name =val_peek(3).sval;
 				SymTabRec rec = symtab.get(name);
@@ -1125,7 +1123,7 @@ case 70:
 
 			}
 break;
-//#line 1081 "Parser.java"
+//#line 1079 "Parser.java"
 //########## END OF USER-SUPPLIED ACTIONS ##########
     }//switch
     //#### Now let's reduce... ####

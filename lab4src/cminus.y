@@ -281,8 +281,6 @@ assign_stmt:	ID ASSIGN expression SEMI{
 								}
 						}
 					}
-					// for(int i=0;i<scope;i++)
-					// 	symtab.incScope();
 					symtab.setScope(scope);
 					//checking under scoop
 					if(FAIL==1 )

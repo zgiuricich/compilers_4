@@ -42,7 +42,9 @@ istore 2
 iload 2
 invokestatic Main/fact(I)I
 istore 3
+getstatic java/lang/System/out Ljava/io/PrintStream;
 iload 3
+invokevirtual java/io/PrintStream/println(I)V
 return
 .end method
 
