@@ -4,6 +4,6 @@ void f(void) {
 }
 
 int g(int x) {
-  z = 20 + w;z
+  z = 20 + w;
 }
 

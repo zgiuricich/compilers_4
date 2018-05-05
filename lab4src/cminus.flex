@@ -61,10 +61,10 @@ print			{yyparser.yylval = new ParserVal(Parser.PLUS); return Parser.PRINT; }
 else			{yyparser.yylval = new ParserVal(Parser.ELSE); return Parser.ELSE; }
 if				{yyparser.yylval = new ParserVal(Parser.IF); return Parser.IF; }
 int				{yyparser.yylval = new ParserVal(Parser.INT); return Parser.INT; }
-return 			{return Parser.RETURN; }
-void			{return Parser.VOID; }
-while 			{return Parser.VOID; }
-input			{return Parser.INPUT; }
+return 			{yyparser.yylval = new ParserVal(Parser.RETURN); return Parser.RETURN; }
+void			{yyparser.yylval = new ParserVal(Parser.VOID); return Parser.VOID; }
+while 			{yyparser.yylval = new ParserVal(Parser.WHILE); return Parser.WHILE; }
+input			{yyparser.yylval = new ParserVal(Parser.INPUT); return Parser.INPUT; }
 
 {letter}({letter}|{digit})*	{
 								yyparser.yylval = new ParserVal(yytext());
@@ -75,6 +75,7 @@ input			{return Parser.INPUT; }
 								yyparser.yylval = new ParserVal(value);
 								return Parser.NUM;
 							}
+{comment}       {/* ignore */}
 "+"				{yyparser.yylval = new ParserVal(Parser.PLUS); return Parser.PLUS;}
 "-"				{yyparser.yylval = new ParserVal(Parser.MINUS); return Parser.MINUS;}
 "="				{return Parser.ASSIGN;}
@@ -95,6 +96,6 @@ input			{return Parser.INPUT; }
 "{"				{yyparser.yylval = new ParserVal(Parser.LBRACE); return Parser.LBRACE;}
 "}"				{yyparser.yylval = new ParserVal(Parser.RBRACE); return Parser.RBRACE;}
 {ws}			{/* ignore */}
-{comment}       {/* ignore */}
+
 
 .               {return Parser.ERROR;}

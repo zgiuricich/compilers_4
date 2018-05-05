@@ -1,19 +1,13 @@
-260
-257
-261
-260
-257
-276
-258
-277
-261
-259
-257
-274
-259
-275
-278
-279
-0
 
 Parse successful
+
+Symbol Table Contents
+
+===============================
+
+kind: array 		name: a		scope: 0		type: 260		size: 10
+kind: variable 		name: x		scope: 0		type: 260
+kind: function 		name: main		scope: 0		type: 259
+
+params: 0
+

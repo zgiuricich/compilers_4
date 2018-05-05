@@ -58,6 +58,10 @@ public class SymTab<E>
 		scope--;
 	}
 
+	public void setScope(int i) {
+		scope = i;
+	}
+
 	public HashMap<String, E> getScopeTable(int scope)
 	{
 		return symTabs.get(scope);

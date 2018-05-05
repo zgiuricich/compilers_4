@@ -3,12 +3,12 @@ void f(int b)
 {
   {
     int c;
-	c = 6;
+	  c = 6;
     {
       int d;
       {
 	    int e;
-		d = 7;
+		  d = 7;
 	    e = d + c + b + a;
       }
     }
