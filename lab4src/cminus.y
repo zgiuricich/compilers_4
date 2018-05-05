@@ -1,3 +1,4 @@
+
 /* 
  * A BYACCJ specification for the Cminus language.
  * Author: Vijay Gehlot
@@ -26,9 +27,9 @@ program:		{
                 {
                 	if (usesRead) GenCode.genReadMethod();
                 	// TODO generate class constructor code
-					GenCode.genClassConstructor();
+						GenCode.genClassConstructor();
                 	// TODO generate epilog
-					GenCode.genEpilogue(symtab);
+						GenCode.genEpilogue(symtab);
                 	// TODO exit symbol table scope
 					symtab.exitScope();
                 	if (!seenMain) semerror("No main in file"); 
@@ -47,21 +48,28 @@ var_declaration:	type_specifier ID SEMI
 				{
 					String name = $2.sval;
 					int rettype = $1.ival;
-					
-					// lookup the name in the symbol table
 					int scope = symtab.getScope();
-					boolean exists = symtab.lookup(name);
-					for (int i = scope; i > 0; --i) {
-						symtab.exitScope();
-						if(symtab.lookup(name)) {
-							exists = true;
+					int FAIL =0;
+					// lookup the name in the symbol table
+					
+					for(int i =0; i <=scope; i++){
+						if(symtab.lookup(name)){
+								i = scope;
+								FAIL=1;
+							}
+							if(!(i==scope)){
+								symtab.decScope();
+							}
 						}
-					}
-					for (int i = 0; i < scope; ++i) {
-						symtab.enterScope();
-					}
-					if(exists) {
-						semerror("Redeclaration of variable " + name);
+							
+					
+					// for(int i=0;i<scope;i++)
+					// 	symtab.incScope();
+					symtab.setScope(scope);
+					if (FAIL == 1)
+					{
+						// if already there, that's a semantic error
+						semerror("Redeclaration of name " + name + " in the current scope");
 					}
 					else if (rettype == VOID)
 					{
@@ -73,7 +81,10 @@ var_declaration:	type_specifier ID SEMI
 						// ok, not in symbol table, no semantic errors, so insert into symtab
 						SymTabRec rec = new VarRec(name, symtab.getScope(), rettype);
 						symtab.insert(name, rec);
-						if(symtab.getScope() == 0) {
+
+						// If this is a global variable (scope of 0) then generate code
+						if (symtab.getScope() == 0)
+						{
 							GenCode.genStaticDecl(rec);
 						}
 					}
@@ -85,19 +96,10 @@ var_declaration:	type_specifier ID SEMI
 					int arraysize = $4.ival;
 					
 					// lookup the name in the symbol table
-					int scope = symtab.getScope();
-					boolean exists = symtab.lookup(name);
-					for (int i = scope; i > 0; --i) {
-						symtab.exitScope();
-						if(symtab.lookup(name)) {
-							exists = true;
-						}
-					}
-					for (int i = 0; i < scope; ++i) {
-						symtab.enterScope();
-					}
-					if(exists) {
-						semerror("Redeclaration of variable " + name);
+					if (symtab.lookup(name))
+					{
+						// if already there, that's a semantic error
+						semerror("Redeclaration of array name " + name + " in the current scope");
 					}
 					else if (rettype == VOID)
 					{
@@ -109,6 +111,10 @@ var_declaration:	type_specifier ID SEMI
 						// ok, not in symbol table, no semantic errors, so insert into symtab
 						SymTabRec rec = new ArrRec(name, symtab.getScope(), rettype, arraysize);
 						symtab.insert(name, rec);
+						if (symtab.getScope() == 0)
+						{
+							GenCode.genStaticDecl(rec);
+						}
 					}
 				}
 			;
@@ -129,19 +135,9 @@ fun_declaration:	type_specifier ID
 						$$ = new ParserVal(rec);
 						
 						// lookup the function name in symbol table
-						int scope = symtab.getScope();
-						boolean exists = symtab.lookup(name);
-						for (int i = scope; i > 0; --i) {
-							symtab.exitScope();
-							if(symtab.lookup(name)) {
-								exists = true;
-							}
-						}
-						for (int i = 0; i < scope; ++i) {
-							symtab.enterScope();
-						}
-						if(exists) {
-							semerror("Redeclaration of function " + name);
+						if (symtab.lookup(name))
+						{
+							semerror("Redeclaration of function name " + name + " in the current scope");
 						}
 						else if (seenMain)
 						{
@@ -163,19 +159,21 @@ fun_declaration:	type_specifier ID
 						FunRec rec = (FunRec)$3.obj;
 						List<SymTabRec> params = (List<SymTabRec>)$5.obj;
 						rec.setParams(params);
+						// Generate code for beginning of function
 						GenCode.genFunBegin(rec);
 					}
 					compound_stmt
 					{
 						// remember we entered scope
 						firstTime = true;
+						// Generate code for end of function
 						GenCode.genFunEnd();
 					}
 			;
 
 params:			param_list { $$ = $1; }
-			|	VOID	{$$ = new ParserVal(null);}
-			|	/* empty */ {$$ = new ParserVal(null);}
+			|	VOID  			{ $$ = new ParserVal(null); }
+			|	/* empty */		{ $$ = new ParserVal(null); }
 			;
 
 param_list:		param_list COMMA param
@@ -200,23 +198,14 @@ param:			type_specifier ID
 					String name = $2.sval;
 					VarRec rec = new VarRec(name, symtab.getScope(), vartype);
 					$$ = new ParserVal(rec);
-					int scope = symtab.getScope();
-					boolean exists = symtab.lookup(name);
-					for (int i = scope; i > 0; --i) {
-						symtab.exitScope();
-						if(symtab.lookup(name)) {
-							exists = true;
-						}
-					}
-					for (int i = 0; i < scope; ++i) {
-						symtab.enterScope();
-					}
-					if(exists) {
-						semerror("Redeclaration of variable " + name);
+					if (symtab.lookup(name))
+					{
+						semerror("Redeclaration of parameter name " + name + " in the current scope");
 					}
 					else
 					{
 						symtab.insert(name, rec);
+						
 					}
 				}
 			|	type_specifier ID LBRACKET RBRACKET
@@ -225,19 +214,9 @@ param:			type_specifier ID
 					String name = $2.sval;
 					ArrRec rec = new ArrRec(name, symtab.getScope(), vartype, -1);
 					$$ = new ParserVal(rec);
-					int scope = symtab.getScope();
-					boolean exists = symtab.lookup(name);
-					for (int i = scope; i > 0; --i) {
-						symtab.exitScope();
-						if(symtab.lookup(name)) {
-							exists = true;
-						}
-					}
-					for (int i = 0; i < scope; ++i) {
-						symtab.enterScope();
-					}
-					if(exists) {
-						semerror("Redeclaration of variable " + name);
+					if (symtab.lookup(name))
+					{
+						semerror("Redeclaration of array parameter name " + name + " in the current scope");
 					}
 					else
 					{
@@ -280,139 +259,164 @@ statement:		assign_stmt
 
 call_stmt:  	call SEMI
 			;
-
-assign_stmt:	ID ASSIGN expression SEMI
-				{
-					String name = $1.sval;
-					int expression = $3.ival;
-					int scope = symtab.getScope();
-					int varType = 0;
-					SymTabRec rec = symtab.get(name);
-					if(rec != null) {
-						varType = rec.type;
-					}
-					boolean exists = symtab.lookup(name);
-					for (int i = scope; i > 0; --i) {
-						symtab.exitScope();
-						if(symtab.lookup(name)) {
-							exists = true;
-							varType = symtab.get(name).type;
-							rec = symtab.get(name);
-						}
-					}
-					for (int i = 0; i < scope; ++i) {
-						symtab.enterScope();
-					}
-					if(!exists) {
-						semerror("Variable " + name + " does not exist in the current scope");
-					}
-					else {
-						if(varType != ParserTokens.INT) {
-							semerror("Variable " + name + " is not of type INT and cannot be assigned");
-						}
-						else {
-							GenCode.genLoadVar(rec);
-						}
-					}
-				}
-			|	ID LBRACKET expression RBRACKET ASSIGN expression SEMI
-				{
+/*FINISHED SCOPE CHECKS*/
+assign_stmt:	ID ASSIGN expression SEMI{								
 					String name = $1.sval;
 					int scope = symtab.getScope();
-					boolean exists = symtab.lookup(name);
+					int FAIL=0;
+					//checking for above scoop 
 					SymTabRec rec = symtab.get(name);
-					for (int i = scope; i > 0; --i) {
-						symtab.exitScope();
-						if(symtab.lookup(name)) {
-							exists = true;
-							rec = symtab.get(name);
+					if(rec == null) {
+						for(int i =0; i <= scope; i++){
+							if(symtab.lookup(name)){
+								rec = symtab.get(name);
+								if(rec== null){
+									FAIL=1;
+									i = scope;
+								}
+								else if(!rec.isVar()){FAIL=2;i=scope;}
+							}
+								if(!(i==scope)){
+									symtab.decScope();
+								}
 						}
 					}
-					for (int i = 0; i < scope; ++i) {
-						symtab.enterScope();
-					}
-					if(!exists) {
-						semerror("Variable " + name + " does not exist in the current scope");
-					}
+					// for(int i=0;i<scope;i++)
+					// 	symtab.incScope();
+					symtab.setScope(scope);
+					//checking under scoop
+					if(FAIL==1 )
+							semerror(" undeclared variable" + name + " in the current scope");
+					else if(FAIL==2 )
+						semerror(" name "+ name +" the assignment is not a variable or array in scope");
 					else {
-						GenCode.genLoadVar(rec);
+						GenCode.genStore(rec);
 					}
-				}
+			}
+			|	ID LBRACKET expression RBRACKET ASSIGN expression SEMI{
+				// fix scope checks
+					String name = $1.sval;
+					int scope = symtab.getScope();
+					int FAIL=0;
+					SymTabRec rec = symtab.get(name);
+					if(rec == null) {
+						for(int i =0; i <=scope; i++){
+							if(symtab.lookup(name)){
+								rec = symtab.get(name);
+								if(rec == null){
+									FAIL=1;
+									i = scope;
+								}
+								if(!rec.isArr()){FAIL=2;i=scope;}
+							}
+							if(!(i==scope)){
+								symtab.decScope();
+							}
+						}
+					}
+					// for(int i=0;i<scope;i++)
+					// 	symtab.incScope();
+					symtab.setScope(scope);
+					//checking under scoop
+					if(FAIL==1 )
+						if(FAIL==1)
+							semerror(" undeclared array" + name + " in the current scope");
+					else if(FAIL==2 )
+						semerror(" name "+ name +" the assignment is not a variable or array in scope");
+					else {
+						GenCode.genStore(rec);
+					}
+			}
 			;
 
 selection_stmt:	IF LPAREN expression RPAREN 
-				{
-					String label = GenCode.getLabel();
-					$$ = new ParserVal(label);
+			{
+					String label = GenCode.getLabel(); // for false condition
+					$$ = new ParserVal(label); // becomes $5 below
 					GenCode.genFGoto(label);
-				}
-				statement
-				{
+			}
+			statement 
+			{
 					String label = GenCode.getLabel();
-					$$ = new ParserVal(label);
+					$$ = new ParserVal(label); // becomes $7
 					GenCode.genGoto(label);
-				}
-				ELSE
-				{
+			}
+			ELSE 
+			{
+					// handle the false condition
 					String label = $5.sval;
 					GenCode.genLabel(label);
-				}
-				statement
-				{
+			}
+			statement
+			{
 					String label2 = $7.sval;
 					GenCode.genLabel(label2);
-				}
+			}
 			;
 
 iteration_stmt:	WHILE LPAREN expression RPAREN statement
 			;
 
-print_stmt:		PRINT LPAREN expression RPAREN SEMI
-			;
-
-input_stmt:		ID ASSIGN INPUT LPAREN RPAREN SEMI
+print_stmt:		PRINT 
 				{
-					String name = $1.sval;
-					SymTabRec rec = symtab.get(name);
-					int scope = symtab.getScope();
-					boolean exists = symtab.lookup(name);
-					for (int i = scope; i > 0; --i) {
-						symtab.exitScope();
-						if(symtab.lookup(name)) {
-							exists = true;
+					GenCode.genBeginPrint();
+				}
+				LPAREN expression RPAREN SEMI 
+				{
+					GenCode.genEndPrint();
+				}
+			;
+input_stmt:		ID ASSIGN INPUT LPAREN RPAREN SEMI{
+				String name = $1.sval;
+				int FAIL=0;int PASS=0;
+				int scope = symtab.getScope();
+				SymTabRec rec=symtab.get(name);
+				if(rec == null) {
+					for(int i =0; i <= scope; i++){
+						if(symtab.lookup(name)){
 							rec = symtab.get(name);
+							if(rec == null){
+								FAIL=1;
+								i = scope;
+							}
+							if(!rec.isVar()){FAIL=2;i=scope;}
+						}
+						if(!(i==scope)){
+							symtab.decScope();
 						}
 					}
-					for (int i = 0; i < scope; ++i) {
-						symtab.enterScope();
-					}
-					if(rec == null) {
-						semerror("Undeclared variable " + name + " in input statement");
-					}
-					else if (!rec.isVar()) {
-						semerror("Name " + name + " in input statement is not a variable");
-					}
-					else {
-						usesRead = true;
-						GenCode.genRead(rec);
-					}
 				}
+					// for(int i=0;i<scope;i++)
+					// 	symtab.incScope();
+					symtab.setScope(scope);
+					//checking under scoop
+					if(FAIL==1 )
+						semerror(" undeclared variable" + name + " in the current scope");
+					else if(FAIL==2 )
+						semerror(" name "+ name +" the assignment is not a variable");
+					else{
+					usesRead=true;GenCode.genRead(rec);
+					}
+
+			}
 			;
 
 return_stmt:	RETURN SEMI 
-				{
-					GenCode.genReturn();
-				}
+			{
+
+				GenCode.genReturn();
+			}
 			| 	RETURN expression SEMI
-				{
-					GenCode.genIReturn();
-				}
+			{
+				GenCode.genIReturn();
+			}
 			;
 
 expression:	  	additive_expression relop additive_expression
 				{
 					int relop = $2.ival;
 					GenCode.genRelOper(relop);
+
 				}
 			|	additive_expression
 			;
@@ -425,7 +429,7 @@ relop:			LTE
 			|	NOTEQ
 			;
 
-additive_expression:	additive_expression addop term { GenCode.genArithOper($2.ival);}
+additive_expression:	additive_expression addop term{GenCode.genArithOper($2.ival);}
 			|	term
 			;
 
@@ -433,99 +437,107 @@ addop:			PLUS
 			|	MINUS
 			;
 
-term:			term mulop factor { GenCode.genArithOper($2.ival); }
+term:			term mulop factor{GenCode.genArithOper($2.ival);}
 			|	factor
 			;
 
 mulop:			MULT
 			|	DIVIDE
 			;
-
 factor:			LPAREN expression RPAREN
 			|	ID
-				{
-					String name = $1.sval;
-					SymTabRec rec = symtab.get(name);
-					int scope = symtab.getScope();
-					boolean exists = symtab.lookup(name);
-					for (int i = scope; i > 0; --i) {
-						symtab.exitScope();
-						if(symtab.lookup(name)) {
-							exists = true;
+			{
+				String name = $1.sval;
+				int scope = symtab.getScope();
+				int FAIL=0;
+				SymTabRec rec =symtab.get(name);
+				// fix params
+				if(rec == null) {
+					for(int i =0; i <= scope; i++){
+						if(symtab.lookup(name)){
 							rec = symtab.get(name);
+							if(rec == null){
+								FAIL=1;
+								i = scope;
+							}
+							if(!(rec.isVar()||rec.isArr())){FAIL=2;i=scope;}
+						}
+						if(!(i==scope)){
+							symtab.decScope();
 						}
 					}
-					for (int i = 0; i < scope; ++i) {
-						symtab.enterScope();
-					}
-					if(rec == null) {
-						semerror("Undeclared variable " + name + " in the current scope");
-					}
-					else if (!rec.isVar() || rec.isArr()) {
-						semerror("Name " + name + " is not a variable or array in current scope");
-					}
-					else {
-						if(rec.isVar()) {
-							GenCode.genLoadVar(rec);
-						}
-						else {
-							GenCode.genLoadArrAddr(rec);
-						}
-					}
+				}
+				// for(int i=0;i<scope;i++)
+				// 	symtab.incScope();
+				symtab.setScope(scope);
+				//checking under scoop
+				if(FAIL==1 ) {
+					semerror(" undeclared variable" + name + " in the current scope");
+				}
+				else if(FAIL==2 ) {
+					semerror(" name "+ name +" the assignment is not a variable or array in scope");
+				}
+				else {
+					GenCode.genLoadVar(rec);
+				}
+					
+					
+					
 				}
 			|	ID LBRACKET expression RBRACKET
-				{
-					String name = $1.sval;
-					SymTabRec rec = symtab.get(name);
-					int scope = symtab.getScope();
-					boolean exists = symtab.lookup(name);
-					for (int i = scope; i > 0; --i) {
-						symtab.exitScope();
-						if(symtab.lookup(name)) {
-							exists = true;
-							rec = symtab.get(name);
+			{
+				String name = $1.sval;
+				int scope = symtab.getScope();
+				int FAIL =0;
+				SymTabRec rec = symtab.get(name);
+				if(rec == null) {
+					for(int i =0; i <= scope; i++){
+						if(symtab.lookup(name)){
+							 rec = symtab.get(name);
+							if(rec == null){
+								FAIL=1;
+								i = scope;
+							}
+							if(!rec.isArr()){FAIL=2;i=scope;}
+						}
+						if(!(i==scope)){
+							symtab.decScope();
 						}
 					}
-					for (int i = 0; i < scope; ++i) {
-						symtab.enterScope();
-					}
-					if(rec == null) {
-						semerror("Undeclared array variable " + name + " in current scope");
-					}
-					else if(! rec.isArr()) {
-						semerror("Name " + name + " is not an array in current scope");
-					}
-					else {
-						GenCode.genLoadArrAddr(rec);
-					}
+				}
+					// for(int i=0;i<scope;i++)
+					// 	symtab.incScope();
+					symtab.setScope(scope);
+					//checking under scoop
+					if(FAIL==1 )
+							semerror(" undeclared  array variable" + name + " in the current scope");
+					else if(FAIL==2 )
+							semerror(" name "+ name +" the assignment is not a variable or array in scope");
+					else
+							GenCode.genLoadArrAddr(rec);
 				}
 			|	call
-			|	NUM
+			|	NUM {GenCode.genLoadConst($1.ival);}
 			;
 
-call:			ID LPAREN args RPAREN
-				{
-					String name = $1.sval;
-					SymTabRec rec = symtab.get(name);
-					int scope = symtab.getScope();
-					boolean exists = symtab.lookup(name);
-					for (int i = scope; i > 0; --i) {
-						symtab.exitScope();
-						if(symtab.lookup(name)) {
-							exists = true;
-							rec = symtab.get(name);
-						}
-					}
-					for (int i = 0; i < scope; ++i) {
-						symtab.enterScope();
-					}
-					if(rec == null) {
-						semerror("Undeclared function " + name + " in the current scope");
-					}
-					else if(!rec.isFun()) {
-						semerror("Name " + name + " is not a function in current scope");
-					}
+call:		ID LPAREN args RPAREN{
+				String name =$1.sval;
+				SymTabRec rec = symtab.get(name);
+				
+				if( rec == null){
+					semerror(name +" is undeclared in the current scope crazy stuff");
+
 				}
+				else if(!rec.isFun()){
+					semerror("NOT A FUNCTION WHAT ARE YOU DOING");
+
+				}
+				else{
+					GenCode.genFunCall(rec);
+					//its all good stuff
+				}
+
+			}
 			;
 
 args:			arg_list 
@@ -540,7 +552,6 @@ arg_list:		 arg_list COMMA expression
 
 /* reference to the lexer object */
 private static Yylex lexer;
-
 /* The symbol table */
 public final SymTab<SymTabRec> symtab = new SymTab<SymTabRec>();
 
@@ -574,6 +585,7 @@ public void yyerror (String error)
     System.err.println("Parse Error : " + error + " at line " + 
 		lexer.getLine() + " column " + 
 		lexer.getCol() + ". Got: " + lexer.yytext());
+		System.out.println();
 }
 
 /* For semantic errors */

@@ -51,15 +51,20 @@ public class SymTab<E>
 	public void incScope()
 	{
 		scope++;
+		int index = symTabs.indexOf(currSymTab);
+		currSymTab = symTabs.get(index + 1);
 	}
 
 	public void decScope()
 	{
 		scope--;
+		int index = symTabs.indexOf(currSymTab);
+		currSymTab = symTabs.get(index - 1);
 	}
 
 	public void setScope(int i) {
 		scope = i;
+		currSymTab = symTabs.get(i);
 	}
 
 	public HashMap<String, E> getScopeTable(int scope)

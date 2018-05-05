@@ -2,13 +2,13 @@
 .class  synchronized Main
 .super  java/lang/Object
 
-; >> FUNCTION fact <<
-.method static fact(I)I
+; >> FUNCTION gcd <<
+.method static gcd(II)I
 .limit stack 32
 .limit locals 32
-iload 0
-ldc 1
-if_icmpgt Label1
+iload 1
+ldc 0
+if_icmpeq Label1
 iconst_0
 goto Label0
 Label1:
@@ -16,19 +16,20 @@ iconst_1
 Label0:
 ifeq Label2
 iload 0
-iload 0
-ldc 1
-isub
-invokestatic Main/fact(I)I
-imul
-istore 1
+ireturn
 goto Label3
 Label2:
-ldc 1
-istore 1
-Label3:
 iload 1
+iload 0
+iload 0
+iload 1
+idiv
+iload 1
+imul
+isub
+invokestatic Main/gcd(II)I
 ireturn
+Label3:
 return
 .end method
 
@@ -39,10 +40,11 @@ return
 .limit locals 32
 invokestatic Main/myRead()I
 istore 2
-iload 2
-invokestatic Main/fact(I)I
+invokestatic Main/myRead()I
 istore 3
+iload 2
 iload 3
+invokestatic Main/gcd(II)I
 return
 .end method
 

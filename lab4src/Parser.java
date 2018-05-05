@@ -16,7 +16,7 @@
 
 
 
-//#line 6 "cminus.y"
+//#line 7 "cminus.y"
 import java.io.*;
 import java.util.*;
 //#line 20 "Parser.java"
@@ -164,100 +164,100 @@ final static short yylhs[] = {                           -1,
     7,   10,    5,    8,    8,    8,   11,   11,   12,   12,
    13,    9,   14,   14,   15,   15,   16,   16,   16,   16,
    16,   16,   16,   16,   16,   23,   17,   17,   26,   27,
-   28,   18,   19,   21,   22,   20,   20,   25,   25,   30,
-   30,   30,   30,   30,   30,   29,   29,   31,   31,   32,
-   32,   33,   33,   34,   34,   34,   34,   34,   24,   35,
-   35,   36,   36,
+   28,   18,   19,   29,   21,   22,   20,   20,   25,   25,
+   31,   31,   31,   31,   31,   31,   30,   30,   32,   32,
+   33,   33,   34,   34,   35,   35,   35,   35,   35,   24,
+   36,   36,   37,   37,
 };
 final static short yylen[] = {                            2,
     0,    2,    2,    1,    1,    1,    3,    6,    1,    1,
     0,    0,    8,    1,    1,    0,    3,    1,    2,    4,
     0,    5,    2,    0,    2,    0,    1,    1,    1,    1,
     1,    1,    1,    1,    1,    2,    4,    7,    0,    0,
-    0,   10,    5,    5,    6,    2,    3,    3,    1,    1,
-    1,    1,    1,    1,    1,    3,    1,    1,    1,    3,
-    1,    1,    1,    3,    1,    4,    1,    1,    4,    1,
-    0,    3,    1,
+    0,   10,    5,    0,    6,    6,    2,    3,    3,    1,
+    1,    1,    1,    1,    1,    1,    3,    1,    1,    1,
+    3,    1,    1,    1,    3,    1,    4,    1,    1,    4,
+    1,    0,    3,    1,
 };
 final static short yydefred[] = {                         1,
     0,    0,   10,    9,    0,    4,    5,    6,    0,    3,
     0,    7,    0,    0,    0,    0,    0,    0,    0,    0,
     0,   18,    8,    0,   12,    0,    0,   21,   17,   20,
    13,    0,   24,    0,   23,    0,    0,    0,    0,   35,
-   22,    0,    0,    0,    0,   28,   25,   27,   29,   30,
+   22,   44,    0,    0,    0,   28,   25,   27,   29,   30,
    31,   32,   33,   34,    0,    0,    0,    0,    0,    0,
-    0,   68,   46,    0,   67,    0,    0,    0,   61,    0,
-   36,    0,    0,   73,    0,    0,    0,    0,    0,    0,
-    0,   47,   58,   59,   51,   52,   50,   53,   54,   55,
-    0,    0,   62,   63,    0,    0,    0,   37,   69,    0,
-    0,    0,   39,    0,   64,    0,    0,   60,    0,    0,
-   72,    0,   44,    0,   66,   43,   45,    0,   40,   38,
-    0,   41,    0,   42,
+    0,   69,   47,    0,   68,    0,    0,    0,   62,    0,
+   36,    0,    0,   74,    0,    0,    0,    0,    0,    0,
+    0,   48,   59,   60,   52,   53,   51,   54,   55,   56,
+    0,    0,   63,   64,    0,    0,    0,   37,   70,    0,
+    0,    0,   39,    0,   65,    0,    0,   61,    0,    0,
+   73,    0,    0,    0,   67,   43,   46,    0,   45,   40,
+   38,    0,   41,    0,   42,
 };
 final static short yydgoto[] = {                          1,
     5,    2,    6,    7,    8,    9,   14,   20,   46,   28,
    21,   22,   32,   34,   37,   47,   48,   49,   50,   51,
-   52,   53,   54,   65,   66,  114,  121,  123,   67,   91,
-   92,   68,   95,   69,   75,   76,
+   52,   53,   54,   65,   66,  114,  122,  124,   59,   67,
+   91,   92,   68,   95,   69,   75,   76,
 };
 final static short yysindex[] = {                         0,
-    0, -144,    0,    0, -144,    0,    0,    0, -249,    0,
- -223,    0, -247, -234, -231, -131, -240,    0, -215, -208,
- -193,    0,    0, -194,    0, -144, -189,    0,    0,    0,
-    0, -188,    0, -144,    0, -173, -244, -223, -165,    0,
-    0, -178, -169, -134, -162,    0,    0,    0,    0,    0,
-    0,    0,    0,    0, -155, -230, -132, -132, -132, -132,
- -197,    0,    0, -132,    0, -148, -157, -126,    0, -132,
-    0, -135, -127,    0, -130, -124, -120, -122, -117, -132,
- -116,    0,    0,    0,    0,    0,    0,    0,    0,    0,
- -132, -132,    0,    0, -132, -115, -114,    0,    0, -132,
- -121, -108,    0, -113,    0, -255, -126,    0, -237, -107,
-    0, -132,    0, -237,    0,    0,    0, -105,    0,    0,
- -125,    0, -237,    0,
+    0, -180,    0,    0, -180,    0,    0,    0, -247,    0,
+ -233,    0, -219, -244, -213, -150, -203,    0, -187, -176,
+ -170,    0,    0, -171,    0, -180, -168,    0,    0,    0,
+    0, -147,    0, -180,    0, -134, -237, -233, -127,    0,
+    0,    0, -141, -140, -137,    0,    0,    0,    0,    0,
+    0,    0,    0,    0, -131, -246, -138, -138, -124, -138,
+ -214,    0,    0, -138,    0, -119, -163, -266,    0, -138,
+    0, -122, -117,    0, -132, -118, -123, -138, -116, -138,
+ -115,    0,    0,    0,    0,    0,    0,    0,    0,    0,
+ -138, -138,    0,    0, -138, -114, -113,    0,    0, -138,
+ -109, -111,    0, -121,    0, -249, -266,    0, -243, -112,
+    0, -138, -105, -243,    0,    0,    0, -104,    0,    0,
+    0, -120,    0, -243,    0,
 };
 final static short yyrindex[] = {                         0,
-    0,    0,    0,    0,  158,    0,    0,    0,    0,    0,
- -106,    0,    0,    0,    0, -104,    0, -243,    0,    0,
- -103,    0,    0, -211,    0,    0,    0,    0,    0,    0,
-    0,    0,    0, -251,    0,    0, -109,    0,    0,    0,
+    0,    0,    0,    0,  148,    0,    0,    0,    0,    0,
+ -107,    0,    0,    0,    0, -106,    0, -228,    0,    0,
+ -103,    0,    0, -190,    0,    0,    0,    0,    0,    0,
+    0,    0,    0, -253,    0,    0, -110,    0,    0,    0,
     0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
     0,    0,    0,    0,    0,    0, -102,    0,    0,    0,
- -212,    0,    0,    0,    0,    0, -129, -186,    0,    0,
+ -212,    0,    0,    0,    0,    0, -135, -193,    0,    0,
     0,    0,    0,    0,    0, -101,    0,    0,    0,    0,
     0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
     0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-    0,    0,    0,    0,    0, -123, -167,    0, -109,    0,
-    0,    0,    0, -109,    0,    0,    0,    0,    0,    0,
-    0,    0, -109,    0,
+    0,    0,    0,    0,    0, -129, -173,    0, -110,    0,
+    0,    0,    0, -110,    0,    0,    0,    0,    0,    0,
+    0,    0,    0, -110,    0,
 };
 final static short yygindex[] = {                         0,
-    0,    0,  156,  132,    0,   -4,    0,    0,  139,    0,
-    0,  142,    0,    0,    0,  -40,    0,    0,    0,    0,
-    0,    0,    0,  -37,  -55,    0,    0,    0,   78,    0,
-    0,   79,    0,   75,    0,    0,
+    0,    0,  156,  132,    0,   10,    0,    0,  139,    0,
+    0,  142,    0,    0,    0,  -17,    0,    0,    0,    0,
+    0,    0,    0,  -37,  -55,    0,    0,    0,    0,   78,
+    0,    0,   79,    0,   75,    0,    0,
 };
 final static int YYTABLESIZE=171;
 static short yytable[];
 static { yytable();}
 static void yytable(){
 yytable = new short[]{                         55,
-   73,   74,   77,   78,   79,   26,   83,   11,   81,   26,
-   15,   19,   39,   10,   96,   84,   40,   26,   26,   39,
-   23,   19,   15,   40,  104,   41,   61,   62,   26,   36,
-   16,   26,   26,   26,   64,   42,   17,   12,   43,   44,
-   45,   24,   42,   13,  111,   43,   44,   45,   65,   65,
-   72,   65,   19,   65,   19,   65,  118,   25,   65,   65,
-   65,   65,   65,   65,   65,   65,   65,   57,  116,   80,
-   26,   55,   27,  119,   57,   57,   55,   57,   30,   57,
-   33,   57,  124,   38,   57,   55,   59,   57,   57,   57,
-   57,   57,   57,   56,   56,   60,   56,   56,   56,   57,
-   56,   58,   70,   56,   83,   71,   56,   56,   56,   56,
-   56,   56,   82,   84,    3,    4,   85,   86,   87,   88,
-   89,   90,   61,   62,   61,   62,   63,   18,    4,   97,
-   64,   49,   64,   98,   49,   99,   49,   48,   49,  100,
-   48,  112,   48,  102,   48,   93,   94,  101,  103,  105,
-  109,  110,  113,  117,  115,  120,  122,    2,   11,   21,
-   10,   16,   14,   71,   70,   35,   31,   29,  106,  108,
+   73,   74,   77,   26,   79,   93,   94,   26,   81,   11,
+   61,   62,   83,   39,   96,   26,   26,   40,   64,   39,
+   16,   84,  102,   40,  104,   19,   26,   12,   10,   26,
+   26,   26,   41,   13,   72,   19,   42,   15,   15,   43,
+   44,   45,   42,   36,  111,   43,   44,   45,   66,   66,
+   57,   66,   80,   66,   17,   66,  118,   23,   66,   66,
+   66,   66,   66,   66,   66,   66,   66,   58,   58,   24,
+   58,   55,   58,   19,   58,   19,   55,   58,    3,    4,
+   58,   58,   58,   58,   58,   58,   55,   57,   57,   25,
+   57,  116,   57,   26,   57,   27,  120,   57,   83,   30,
+   57,   57,   57,   57,   57,   57,  125,   84,   18,    4,
+   85,   86,   87,   88,   89,   90,   61,   62,   61,   62,
+   63,   33,   38,   60,   64,   50,   64,   70,   50,   71,
+   50,   49,   50,   99,   49,   56,   49,   57,   49,   58,
+   78,   82,   97,   98,  101,  100,  115,    2,  117,  103,
+  105,  109,  110,  112,  113,  119,  121,   11,   21,   16,
+   10,  123,   14,   72,   71,   35,   31,   29,  106,  108,
   107,
 };
 }
@@ -265,23 +265,23 @@ static short yycheck[];
 static { yycheck(); }
 static void yycheck() {
 yycheck = new short[] {                         37,
-   56,   57,   58,   59,   60,  257,  262,  257,   64,  261,
-  258,   16,  257,  257,   70,  271,  261,  269,  270,  257,
-  261,   26,  266,  261,   80,  270,  257,  258,  280,   34,
-  265,  283,  284,  285,  265,  280,  268,  261,  283,  284,
-  285,  257,  280,  267,  100,  283,  284,  285,  261,  262,
-  281,  264,  264,  266,  266,  268,  112,  266,  271,  272,
-  273,  274,  275,  276,  277,  278,  279,  265,  109,  267,
-  264,  109,  267,  114,  261,  262,  114,  264,  268,  266,
-  269,  268,  123,  257,  271,  123,  265,  274,  275,  276,
-  277,  278,  279,  261,  262,  265,  264,  263,  266,  265,
-  268,  267,  265,  271,  262,  261,  274,  275,  276,  277,
-  278,  279,  261,  271,  259,  260,  274,  275,  276,  277,
-  278,  279,  257,  258,  257,  258,  261,  259,  260,  265,
-  265,  261,  265,  261,  264,  266,  266,  261,  268,  264,
-  264,  263,  266,  266,  268,  272,  273,  268,  266,  266,
-  266,  266,  261,  261,  268,  261,  282,    0,  265,  269,
-    5,  266,  266,  266,  266,   34,   28,   26,   91,   95,
+   56,   57,   58,  257,   60,  272,  273,  261,   64,  257,
+  257,  258,  262,  257,   70,  269,  270,  261,  265,  257,
+  265,  271,   78,  261,   80,   16,  280,  261,  257,  283,
+  284,  285,  270,  267,  281,   26,  280,  266,  258,  283,
+  284,  285,  280,   34,  100,  283,  284,  285,  261,  262,
+  265,  264,  267,  266,  268,  268,  112,  261,  271,  272,
+  273,  274,  275,  276,  277,  278,  279,  261,  262,  257,
+  264,  109,  266,  264,  268,  266,  114,  271,  259,  260,
+  274,  275,  276,  277,  278,  279,  124,  261,  262,  266,
+  264,  109,  266,  264,  268,  267,  114,  271,  262,  268,
+  274,  275,  276,  277,  278,  279,  124,  271,  259,  260,
+  274,  275,  276,  277,  278,  279,  257,  258,  257,  258,
+  261,  269,  257,  265,  265,  261,  265,  265,  264,  261,
+  266,  261,  268,  266,  264,  263,  266,  265,  268,  267,
+  265,  261,  265,  261,  268,  264,  268,    0,  261,  266,
+  266,  266,  266,  263,  266,  261,  261,  265,  269,  266,
+    5,  282,  266,  266,  266,   34,   28,   26,   91,   95,
    92,
 };
 }
@@ -354,7 +354,8 @@ final static String yyrule[] = {
 "$$7 :",
 "selection_stmt : IF LPAREN expression RPAREN $$5 statement $$6 ELSE $$7 statement",
 "iteration_stmt : WHILE LPAREN expression RPAREN statement",
-"print_stmt : PRINT LPAREN expression RPAREN SEMI",
+"$$8 :",
+"print_stmt : PRINT $$8 LPAREN expression RPAREN SEMI",
 "input_stmt : ID ASSIGN INPUT LPAREN RPAREN SEMI",
 "return_stmt : RETURN SEMI",
 "return_stmt : RETURN expression SEMI",
@@ -386,11 +387,10 @@ final static String yyrule[] = {
 "arg_list : expression",
 };
 
-//#line 540 "cminus.y"
+//#line 552 "cminus.y"
 
 /* reference to the lexer object */
 private static Yylex lexer;
-
 /* The symbol table */
 public final SymTab<SymTabRec> symtab = new SymTab<SymTabRec>();
 
@@ -424,6 +424,7 @@ public void yyerror (String error)
     System.err.println("Parse Error : " + error + " at line " + 
 		lexer.getLine() + " column " + 
 		lexer.getCol() + ". Got: " + lexer.yytext());
+		System.out.println();
 }
 
 /* For semantic errors */
@@ -449,7 +450,7 @@ public static void main (String [] args) throws IOException
 }
 
 */
-//#line 410 "Parser.java"
+//#line 411 "Parser.java"
 //###############################################################
 // method: yylexdebug : check lexer state
 //###############################################################
@@ -604,7 +605,7 @@ boolean doaction;
       {
 //########## USER-SUPPLIED ACTIONS ##########
 case 1:
-//#line 19 "cminus.y"
+//#line 20 "cminus.y"
 { 
 					/* TODO enter scope in symbol table*/
 					symtab.enterScope();
@@ -613,38 +614,45 @@ case 1:
                 }
 break;
 case 2:
-//#line 26 "cminus.y"
+//#line 27 "cminus.y"
 {
                 	if (usesRead) GenCode.genReadMethod();
                 	/* TODO generate class constructor code*/
-					GenCode.genClassConstructor();
+						GenCode.genClassConstructor();
                 	/* TODO generate epilog*/
-					GenCode.genEpilogue(symtab);
+						GenCode.genEpilogue(symtab);
                 	/* TODO exit symbol table scope*/
 					symtab.exitScope();
                 	if (!seenMain) semerror("No main in file"); 
 				}
 break;
 case 7:
-//#line 47 "cminus.y"
+//#line 48 "cminus.y"
 {
 					String name = val_peek(1).sval;
 					int rettype = val_peek(2).ival;
-					
-					/* lookup the name in the symbol table*/
 					int scope = symtab.getScope();
-					boolean exists = symtab.lookup(name);
-					for (int i = scope; i > 0; --i) {
-						symtab.exitScope();
-						if(symtab.lookup(name)) {
-							exists = true;
+					int FAIL =0;
+					/* lookup the name in the symbol table*/
+					
+					for(int i =0; i <=scope; i++){
+						if(symtab.lookup(name)){
+								i = scope;
+								FAIL=1;
+							}
+							if(!(i==scope)){
+								symtab.decScope();
+							}
 						}
-					}
-					for (int i = 0; i < scope; ++i) {
-						symtab.enterScope();
-					}
-					if(exists) {
-						semerror("Redeclaration of variable " + name);
+							
+					
+					/* for(int i=0;i<scope;i++)*/
+					/* 	symtab.incScope();*/
+					symtab.setScope(scope);
+					if (FAIL == 1)
+					{
+						/* if already there, that's a semantic error*/
+						semerror("Redeclaration of name " + name + " in the current scope");
 					}
 					else if (rettype == VOID)
 					{
@@ -656,33 +664,27 @@ case 7:
 						/* ok, not in symbol table, no semantic errors, so insert into symtab*/
 						SymTabRec rec = new VarRec(name, symtab.getScope(), rettype);
 						symtab.insert(name, rec);
-						if(symtab.getScope() == 0) {
+
+						/* If this is a global variable (scope of 0) then generate code*/
+						if (symtab.getScope() == 0)
+						{
 							GenCode.genStaticDecl(rec);
 						}
 					}
 				}
 break;
 case 8:
-//#line 82 "cminus.y"
+//#line 93 "cminus.y"
 {
 					String name = val_peek(4).sval;
 					int rettype = val_peek(5).ival;
 					int arraysize = val_peek(2).ival;
 					
 					/* lookup the name in the symbol table*/
-					int scope = symtab.getScope();
-					boolean exists = symtab.lookup(name);
-					for (int i = scope; i > 0; --i) {
-						symtab.exitScope();
-						if(symtab.lookup(name)) {
-							exists = true;
-						}
-					}
-					for (int i = 0; i < scope; ++i) {
-						symtab.enterScope();
-					}
-					if(exists) {
-						semerror("Redeclaration of variable " + name);
+					if (symtab.lookup(name))
+					{
+						/* if already there, that's a semantic error*/
+						semerror("Redeclaration of array name " + name + " in the current scope");
 					}
 					else if (rettype == VOID)
 					{
@@ -694,19 +696,23 @@ case 8:
 						/* ok, not in symbol table, no semantic errors, so insert into symtab*/
 						SymTabRec rec = new ArrRec(name, symtab.getScope(), rettype, arraysize);
 						symtab.insert(name, rec);
+						if (symtab.getScope() == 0)
+						{
+							GenCode.genStaticDecl(rec);
+						}
 					}
 				}
 break;
 case 9:
-//#line 116 "cminus.y"
+//#line 122 "cminus.y"
 { yyval = val_peek(0); }
 break;
 case 10:
-//#line 117 "cminus.y"
+//#line 123 "cminus.y"
 { yyval = val_peek(0); }
 break;
 case 11:
-//#line 121 "cminus.y"
+//#line 127 "cminus.y"
 {
 						int rettype = val_peek(1).ival;
 						String name = val_peek(0).sval;
@@ -718,19 +724,9 @@ case 11:
 						yyval = new ParserVal(rec);
 						
 						/* lookup the function name in symbol table*/
-						int scope = symtab.getScope();
-						boolean exists = symtab.lookup(name);
-						for (int i = scope; i > 0; --i) {
-							symtab.exitScope();
-							if(symtab.lookup(name)) {
-								exists = true;
-							}
-						}
-						for (int i = 0; i < scope; ++i) {
-							symtab.enterScope();
-						}
-						if(exists) {
-							semerror("Redeclaration of function " + name);
+						if (symtab.lookup(name))
+						{
+							semerror("Redeclaration of function name " + name + " in the current scope");
 						}
 						else if (seenMain)
 						{
@@ -749,36 +745,38 @@ case 11:
 					}
 break;
 case 12:
-//#line 162 "cminus.y"
+//#line 158 "cminus.y"
 {
 						FunRec rec = (FunRec)val_peek(3).obj;
 						List<SymTabRec> params = (List<SymTabRec>)val_peek(1).obj;
 						rec.setParams(params);
+						/* Generate code for beginning of function*/
 						GenCode.genFunBegin(rec);
 					}
 break;
 case 13:
-//#line 169 "cminus.y"
+//#line 166 "cminus.y"
 {
 						/* remember we entered scope*/
 						firstTime = true;
+						/* Generate code for end of function*/
 						GenCode.genFunEnd();
 					}
 break;
 case 14:
-//#line 176 "cminus.y"
+//#line 174 "cminus.y"
 { yyval = val_peek(0); }
 break;
 case 15:
-//#line 177 "cminus.y"
-{yyval = new ParserVal(null);}
+//#line 175 "cminus.y"
+{ yyval = new ParserVal(null); }
 break;
 case 16:
-//#line 178 "cminus.y"
-{yyval = new ParserVal(null);}
+//#line 176 "cminus.y"
+{ yyval = new ParserVal(null); }
 break;
 case 17:
-//#line 182 "cminus.y"
+//#line 180 "cminus.y"
 {
 					List<SymTabRec> reclist = (List<SymTabRec>)val_peek(2).obj;
 					SymTabRec rec = (SymTabRec)val_peek(0).obj;
@@ -787,7 +785,7 @@ case 17:
 				}
 break;
 case 18:
-//#line 189 "cminus.y"
+//#line 187 "cminus.y"
 {
 					List<SymTabRec> reclist = new ArrayList<SymTabRec>();
 					SymTabRec rec = (SymTabRec)val_peek(0).obj;
@@ -796,52 +794,33 @@ case 18:
 				}
 break;
 case 19:
-//#line 198 "cminus.y"
+//#line 196 "cminus.y"
 {
 					int vartype = val_peek(1).ival;
 					String name = val_peek(0).sval;
 					VarRec rec = new VarRec(name, symtab.getScope(), vartype);
 					yyval = new ParserVal(rec);
-					int scope = symtab.getScope();
-					boolean exists = symtab.lookup(name);
-					for (int i = scope; i > 0; --i) {
-						symtab.exitScope();
-						if(symtab.lookup(name)) {
-							exists = true;
-						}
-					}
-					for (int i = 0; i < scope; ++i) {
-						symtab.enterScope();
-					}
-					if(exists) {
-						semerror("Redeclaration of variable " + name);
+					if (symtab.lookup(name))
+					{
+						semerror("Redeclaration of parameter name " + name + " in the current scope");
 					}
 					else
 					{
 						symtab.insert(name, rec);
+						
 					}
 				}
 break;
 case 20:
-//#line 223 "cminus.y"
+//#line 212 "cminus.y"
 {
 					int vartype = val_peek(3).ival;
 					String name = val_peek(2).sval;
 					ArrRec rec = new ArrRec(name, symtab.getScope(), vartype, -1);
 					yyval = new ParserVal(rec);
-					int scope = symtab.getScope();
-					boolean exists = symtab.lookup(name);
-					for (int i = scope; i > 0; --i) {
-						symtab.exitScope();
-						if(symtab.lookup(name)) {
-							exists = true;
-						}
-					}
-					for (int i = 0; i < scope; ++i) {
-						symtab.enterScope();
-					}
-					if(exists) {
-						semerror("Redeclaration of variable " + name);
+					if (symtab.lookup(name))
+					{
+						semerror("Redeclaration of array parameter name " + name + " in the current scope");
 					}
 					else
 					{
@@ -850,7 +829,7 @@ case 20:
 				}
 break;
 case 21:
-//#line 249 "cminus.y"
+//#line 228 "cminus.y"
 {
 					/* handle special case of entering scope in function params*/
 					if (firstTime)
@@ -860,241 +839,293 @@ case 21:
 				}
 break;
 case 22:
-//#line 257 "cminus.y"
+//#line 236 "cminus.y"
 {
 					symtab.exitScope();
 				}
 break;
 case 37:
-//#line 285 "cminus.y"
-{
+//#line 263 "cminus.y"
+{								
 					String name = val_peek(3).sval;
-					int expression = val_peek(1).ival;
 					int scope = symtab.getScope();
-					int varType = 0;
+					int FAIL=0;
+					/*checking for above scoop */
 					SymTabRec rec = symtab.get(name);
-					if(rec != null) {
-						varType = rec.type;
-					}
-					boolean exists = symtab.lookup(name);
-					for (int i = scope; i > 0; --i) {
-						symtab.exitScope();
-						if(symtab.lookup(name)) {
-							exists = true;
-							varType = symtab.get(name).type;
-							rec = symtab.get(name);
+					if(rec == null) {
+						for(int i =0; i <= scope; i++){
+							if(symtab.lookup(name)){
+								rec = symtab.get(name);
+								if(rec== null){
+									FAIL=1;
+									i = scope;
+								}
+								else if(!rec.isVar()){FAIL=2;i=scope;}
+							}
+								if(!(i==scope)){
+									symtab.decScope();
+								}
 						}
 					}
-					for (int i = 0; i < scope; ++i) {
-						symtab.enterScope();
-					}
-					if(!exists) {
-						semerror("Variable " + name + " does not exist in the current scope");
-					}
+					/* for(int i=0;i<scope;i++)*/
+					/* 	symtab.incScope();*/
+					symtab.setScope(scope);
+					/*checking under scoop*/
+					if(FAIL==1 )
+							semerror(" undeclared variable" + name + " in the current scope");
+					else if(FAIL==2 )
+						semerror(" name "+ name +" the assignment is not a variable or array in scope");
 					else {
-						if(varType != ParserTokens.INT) {
-							semerror("Variable " + name + " is not of type INT and cannot be assigned");
-						}
-						else {
-							GenCode.genLoadVar(rec);
-						}
+						GenCode.genStore(rec);
 					}
-				}
+			}
 break;
 case 38:
-//#line 319 "cminus.y"
+//#line 296 "cminus.y"
 {
+				/* fix scope checks*/
 					String name = val_peek(6).sval;
 					int scope = symtab.getScope();
-					boolean exists = symtab.lookup(name);
+					int FAIL=0;
 					SymTabRec rec = symtab.get(name);
-					for (int i = scope; i > 0; --i) {
-						symtab.exitScope();
-						if(symtab.lookup(name)) {
-							exists = true;
-							rec = symtab.get(name);
+					if(rec == null) {
+						for(int i =0; i <=scope; i++){
+							if(symtab.lookup(name)){
+								rec = symtab.get(name);
+								if(rec == null){
+									FAIL=1;
+									i = scope;
+								}
+								if(!rec.isArr()){FAIL=2;i=scope;}
+							}
+							if(!(i==scope)){
+								symtab.decScope();
+							}
 						}
 					}
-					for (int i = 0; i < scope; ++i) {
-						symtab.enterScope();
-					}
-					if(!exists) {
-						semerror("Variable " + name + " does not exist in the current scope");
-					}
+					/* for(int i=0;i<scope;i++)*/
+					/* 	symtab.incScope();*/
+					symtab.setScope(scope);
+					/*checking under scoop*/
+					if(FAIL==1 )
+						if(FAIL==1)
+							semerror(" undeclared array" + name + " in the current scope");
+					else if(FAIL==2 )
+						semerror(" name "+ name +" the assignment is not a variable or array in scope");
 					else {
-						GenCode.genLoadVar(rec);
+						GenCode.genStore(rec);
 					}
-				}
+			}
 break;
 case 39:
-//#line 344 "cminus.y"
+//#line 333 "cminus.y"
 {
-					String label = GenCode.getLabel();
-					yyval = new ParserVal(label);
+					String label = GenCode.getLabel(); /* for false condition*/
+					yyval = new ParserVal(label); /* becomes $5 below*/
 					GenCode.genFGoto(label);
-				}
+			}
 break;
 case 40:
-//#line 350 "cminus.y"
+//#line 339 "cminus.y"
 {
 					String label = GenCode.getLabel();
-					yyval = new ParserVal(label);
+					yyval = new ParserVal(label); /* becomes $7*/
 					GenCode.genGoto(label);
-				}
+			}
 break;
 case 41:
-//#line 356 "cminus.y"
+//#line 345 "cminus.y"
 {
+					/* handle the false condition*/
 					String label = val_peek(3).sval;
 					GenCode.genLabel(label);
-				}
+			}
 break;
 case 42:
-//#line 361 "cminus.y"
+//#line 351 "cminus.y"
 {
 					String label2 = val_peek(3).sval;
 					GenCode.genLabel(label2);
+			}
+break;
+case 44:
+//#line 361 "cminus.y"
+{
+					GenCode.genBeginPrint();
 				}
 break;
 case 45:
-//#line 374 "cminus.y"
+//#line 365 "cminus.y"
 {
-					String name = val_peek(5).sval;
-					SymTabRec rec = symtab.get(name);
-					int scope = symtab.getScope();
-					boolean exists = symtab.lookup(name);
-					for (int i = scope; i > 0; --i) {
-						symtab.exitScope();
-						if(symtab.lookup(name)) {
-							exists = true;
-							rec = symtab.get(name);
-						}
-					}
-					for (int i = 0; i < scope; ++i) {
-						symtab.enterScope();
-					}
-					if(rec == null) {
-						semerror("Undeclared variable " + name + " in input statement");
-					}
-					else if (!rec.isVar()) {
-						semerror("Name " + name + " in input statement is not a variable");
-					}
-					else {
-						usesRead = true;
-						GenCode.genRead(rec);
-					}
+					GenCode.genEndPrint();
 				}
 break;
 case 46:
-//#line 403 "cminus.y"
+//#line 369 "cminus.y"
 {
-					GenCode.genReturn();
+				String name = val_peek(5).sval;
+				int FAIL=0;int PASS=0;
+				int scope = symtab.getScope();
+				SymTabRec rec=symtab.get(name);
+				if(rec == null) {
+					for(int i =0; i <= scope; i++){
+						if(symtab.lookup(name)){
+							rec = symtab.get(name);
+							if(rec == null){
+								FAIL=1;
+								i = scope;
+							}
+							if(!rec.isVar()){FAIL=2;i=scope;}
+						}
+						if(!(i==scope)){
+							symtab.decScope();
+						}
+					}
 				}
+					/* for(int i=0;i<scope;i++)*/
+					/* 	symtab.incScope();*/
+					symtab.setScope(scope);
+					/*checking under scoop*/
+					if(FAIL==1 )
+						semerror(" undeclared variable" + name + " in the current scope");
+					else if(FAIL==2 )
+						semerror(" name "+ name +" the assignment is not a variable");
+					else{
+					usesRead=true;GenCode.genRead(rec);
+					}
+
+			}
 break;
 case 47:
-//#line 407 "cminus.y"
+//#line 405 "cminus.y"
 {
-					GenCode.genIReturn();
-				}
+
+				GenCode.genReturn();
+			}
 break;
 case 48:
-//#line 413 "cminus.y"
+//#line 410 "cminus.y"
+{
+				GenCode.genIReturn();
+			}
+break;
+case 49:
+//#line 416 "cminus.y"
 {
 					int relop = val_peek(1).ival;
 					GenCode.genRelOper(relop);
+
 				}
 break;
-case 60:
-//#line 436 "cminus.y"
-{ GenCode.genArithOper(val_peek(1).ival); }
+case 57:
+//#line 432 "cminus.y"
+{GenCode.genArithOper(val_peek(1).ival);}
 break;
-case 65:
-//#line 446 "cminus.y"
-{
-					String name = val_peek(0).sval;
-					SymTabRec rec = symtab.get(name);
-					int scope = symtab.getScope();
-					boolean exists = symtab.lookup(name);
-					for (int i = scope; i > 0; --i) {
-						symtab.exitScope();
-						if(symtab.lookup(name)) {
-							exists = true;
-							rec = symtab.get(name);
-						}
-					}
-					for (int i = 0; i < scope; ++i) {
-						symtab.enterScope();
-					}
-					if(rec == null) {
-						semerror("Undeclared variable " + name + " in the current scope");
-					}
-					else if (!rec.isVar() || rec.isArr()) {
-						semerror("Name " + name + " is not a variable or array in current scope");
-					}
-					else {
-						if(rec.isVar()) {
-							GenCode.genLoadVar(rec);
-						}
-						else {
-							GenCode.genLoadArrAddr(rec);
-						}
-					}
-				}
+case 61:
+//#line 440 "cminus.y"
+{GenCode.genArithOper(val_peek(1).ival);}
 break;
 case 66:
-//#line 477 "cminus.y"
+//#line 449 "cminus.y"
 {
-					String name = val_peek(3).sval;
-					SymTabRec rec = symtab.get(name);
-					int scope = symtab.getScope();
-					boolean exists = symtab.lookup(name);
-					for (int i = scope; i > 0; --i) {
-						symtab.exitScope();
-						if(symtab.lookup(name)) {
-							exists = true;
+				String name = val_peek(0).sval;
+				int scope = symtab.getScope();
+				int FAIL=0;
+				SymTabRec rec =symtab.get(name);
+				/* fix params*/
+				if(rec == null) {
+					for(int i =0; i <= scope; i++){
+						if(symtab.lookup(name)){
 							rec = symtab.get(name);
+							if(rec == null){
+								FAIL=1;
+								i = scope;
+							}
+							if(!(rec.isVar()||rec.isArr())){FAIL=2;i=scope;}
+						}
+						if(!(i==scope)){
+							symtab.decScope();
 						}
 					}
-					for (int i = 0; i < scope; ++i) {
-						symtab.enterScope();
+				}
+				/* for(int i=0;i<scope;i++)*/
+				/* 	symtab.incScope();*/
+				symtab.setScope(scope);
+				/*checking under scoop*/
+				if(FAIL==1 ) {
+					semerror(" undeclared variable" + name + " in the current scope");
+				}
+				else if(FAIL==2 ) {
+					semerror(" name "+ name +" the assignment is not a variable or array in scope");
+				}
+				else {
+					GenCode.genLoadVar(rec);
+				}
+					
+					
+					
+				}
+break;
+case 67:
+//#line 488 "cminus.y"
+{
+				String name = val_peek(3).sval;
+				int scope = symtab.getScope();
+				int FAIL =0;
+				SymTabRec rec = symtab.get(name);
+				if(rec == null) {
+					for(int i =0; i <= scope; i++){
+						if(symtab.lookup(name)){
+							 rec = symtab.get(name);
+							if(rec == null){
+								FAIL=1;
+								i = scope;
+							}
+							if(!rec.isArr()){FAIL=2;i=scope;}
+						}
+						if(!(i==scope)){
+							symtab.decScope();
+						}
 					}
-					if(rec == null) {
-						semerror("Undeclared array variable " + name + " in current scope");
-					}
-					else if(! rec.isArr()) {
-						semerror("Name " + name + " is not an array in current scope");
-					}
-					else {
-						GenCode.genLoadArrAddr(rec);
-					}
+				}
+					/* for(int i=0;i<scope;i++)*/
+					/* 	symtab.incScope();*/
+					symtab.setScope(scope);
+					/*checking under scoop*/
+					if(FAIL==1 )
+							semerror(" undeclared  array variable" + name + " in the current scope");
+					else if(FAIL==2 )
+							semerror(" name "+ name +" the assignment is not a variable or array in scope");
+					else
+							GenCode.genLoadArrAddr(rec);
 				}
 break;
 case 69:
-//#line 507 "cminus.y"
-{
-					String name = val_peek(3).sval;
-					SymTabRec rec = symtab.get(name);
-					int scope = symtab.getScope();
-					boolean exists = symtab.lookup(name);
-					for (int i = scope; i > 0; --i) {
-						symtab.exitScope();
-						if(symtab.lookup(name)) {
-							exists = true;
-							rec = symtab.get(name);
-						}
-					}
-					for (int i = 0; i < scope; ++i) {
-						symtab.enterScope();
-					}
-					if(rec == null) {
-						semerror("Undeclared function " + name + " in the current scope");
-					}
-					else if(!rec.isFun()) {
-						semerror("Name " + name + " is not a function in current scope");
-					}
-				}
+//#line 520 "cminus.y"
+{GenCode.genLoadConst(val_peek(0).ival);}
 break;
-//#line 1050 "Parser.java"
+case 70:
+//#line 523 "cminus.y"
+{
+				String name =val_peek(3).sval;
+				SymTabRec rec = symtab.get(name);
+				
+				if( rec == null){
+					semerror(name +" is undeclared in the current scope crazy stuff");
+
+				}
+				else if(!rec.isFun()){
+					semerror("NOT A FUNCTION WHAT ARE YOU DOING");
+
+				}
+				else{
+					GenCode.genFunCall(rec);
+					/*its all good stuff*/
+				}
+
+			}
+break;
+//#line 1081 "Parser.java"
 //########## END OF USER-SUPPLIED ACTIONS ##########
     }//switch
     //#### Now let's reduce... ####

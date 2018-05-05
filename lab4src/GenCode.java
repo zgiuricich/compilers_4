@@ -26,12 +26,12 @@ public class GenCode implements ParserTokens
 		String type;
 		if (r.isVar())
 		{
-			type = " I"; // integer type
+			type = " I";
 		}
 		else
 		{
 			// array
-			type = " "; // TODO type for integer array
+			type = " [I";
 
 		}
 		outputCode(".field static " + r.name + type);
@@ -98,41 +98,38 @@ public class GenCode implements ParserTokens
 		outputCode("; >> FUNCTION " + fr.name + " <<");
 		if (ismain)
 		{
-			// TODO
-			// outputCode for .method for main method
-			// outputCode for .throws any exceptions thrown by main
+			outputCode(".method public static main([Ljava/lang/String;)V");
+			outputCode(".throws java/io/IOException");
 		}
 		else
 		{
-			// TODO
-			// outputCode for static .method (method name from fr.name)
-			// also need the computeTypeDescr
+			outputCode(".method static " + fr.name + computeTypeDesc(fr));
 		}
-		// requires analysis for exact count TODO change this value?
+		// requires analysis for exact count
 		outputCode(".limit stack 32");
-		// can be kept track of TODO change this value?
+		// can be kept track of
 		outputCode(".limit locals 32");
 	}
 
 	public static void genFunEnd()
 	{
-		// TODO outputCode for end of function, including return
+		outputCode("return");
 		/*
 		 * always put a return to avoid jumping an illegal instruction if for
 		 * example the else has return e and is the last statement. See gcd1.c
 		 * as an example
 		 */
-		// TODO outputCode for end of .method
+		outputCode(".end method\n");
 	}
 
 	public static void genReturn()
 	{
-		// TODO outputCode for void return
+		outputCode("return");
 	}
 
 	public static void genIReturn()
 	{
-		// TODO outputCode for integer return
+		outputCode("ireturn");
 	}
 
 	public static void genLoadArrAddr(SymTabRec r)
@@ -141,23 +138,23 @@ public class GenCode implements ParserTokens
 		if (ar.scope == 0)
 		{
 			// global array
-			// TODO outputCode for global (static) integer array, loading value from
+			outputCode("getstatic " + className + "/" + ar.name + " [I");
 		}
 		else
 		{
 			// local array
-			// TODO outputCode for array load (need the ar.jvmnum)
+			outputCode("aload " + ar.jvmnum);
 		}
 	}
 
 	public static void genIAStore()
 	{
-		// TODO outputCode for integer array store
+		outputCode("iastore");
 	}
 
 	public static void genIALoad()
 	{
-		// TODO outputCode for integer array load
+		outputCode("iaload");
 	}
 
 	public static void genStore(SymTabRec r)
@@ -166,11 +163,11 @@ public class GenCode implements ParserTokens
 		if (vr.scope == 0)
 		{
 			// global var
-			// TODO outputCode for storing to a global (static) integer variable
+			outputCode("putstatic " + className + "/" + vr.name + " I");
 		}
 		else
 		{
-			// TODO outputCode for storing value of local int variable (need vr.jvmnum)
+			outputCode("istore " + vr.jvmnum);
 		}
 	}
 
@@ -180,12 +177,10 @@ public class GenCode implements ParserTokens
 		if (vr.scope == 0)
 		{
 			// global variable
-			// TODO outputCode for loading value of global (static) int variable
 			outputCode("getstatic " + className + "/" + vr.name + " I");
 		}
 		else
 		{
-			// TODO outputCode for loading local int variable
 			// initialize local variable to 0
 			//outputCode("ldc 0");
 			//outputCode("istore " + vr.jvmnum);
@@ -195,12 +190,12 @@ public class GenCode implements ParserTokens
 
 	public static void genLoadConst(int i)
 	{
-		// TODO outputCode for loading constant value
+		outputCode("ldc " + i);
 	}
 
 	public static void genXOR()
 	{
-		// TODO outputCode for xor
+		outputCode("ixor");
 	}
 
 	public static void genArithOper(int t)
@@ -208,17 +203,16 @@ public class GenCode implements ParserTokens
 		switch (t)
 		{
 			case PLUS:
-				// TODO outputCode for integer add
+				outputCode("iadd");
 				break;
 			case MINUS:
-				// TODO outputCode for integer subtraction
 				outputCode("isub");
 				break;
 			case MULT:
-				// TODO outputCode for integer multiplication
+				outputCode("imul");
 				break;
 			case DIVIDE:
-				// TODO outputCode for integer division
+				outputCode("idiv");
 				break;
 		}
 	}
@@ -267,18 +261,18 @@ public class GenCode implements ParserTokens
 
 	public static void genIneg()
 	{
-		// TODO outputCode for integer negate
+		outputCode("ineg");
 	}
 
 	public static void genFGoto(String lab)
 	{
 		// if false (= 0) then goto
-		// TODO outputcode for ifeq
+		outputCode("ifeq " + lab);
 	}
 
 	public static void genGoto(String lab)
 	{
-		// TODO outputCode for goto
+		outputCode("goto " + lab);
 	}
 
 	public static String getLabel()
@@ -293,16 +287,14 @@ public class GenCode implements ParserTokens
 
 	public static void genBeginPrint()
 	{
-		// TODO outputCode for start of println of a single int value
+		outputCode("getstatic java/lang/System/out Ljava/io/PrintStream;");
 	}
 
 	public static void genEndPrint()
 	{
-		// TODO outputcode for ending of println (calling println here)
+		outputCode("invokevirtual java/io/PrintStream/println(I)V");
 	}
 
-	// TODO use this to generate code to read a value into a variable
-	// indicated by the SymTabRec parameter
 	public static void genRead(SymTabRec r)
 	{
 		outputCode("invokestatic " + className + "/myRead()I");
@@ -341,8 +333,10 @@ public class GenCode implements ParserTokens
 
 	public static void genPrologue()
 	{
-		// TODO outputCode for prologue that starts a Java program
-		// note we have variables available for fileName and className
+		// boilerplate code
+		outputCode(".source " + fileName);
+		outputCode(".class  synchronized " + className);
+		outputCode(".super  java/lang/Object\n");
 	}
 
 	public static void genEpilogue(SymTab<SymTabRec> st)

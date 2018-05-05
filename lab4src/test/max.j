@@ -1,17 +1,47 @@
+.source stdin
+.class  synchronized Main
+.super  java/lang/Object
+
 .field static x I
 .field static y I
 ; >> FUNCTION max <<
+.method static max(II)I
 .limit stack 32
 .limit locals 32
-Label0:
+iload 0
+iload 1
+if_icmpgt Label1
+iconst_0
+goto Label0
 Label1:
+iconst_1
+Label0:
+ifeq Label2
+iload 0
+ireturn
+goto Label3
+Label2:
+iload 1
+ireturn
+Label3:
+return
+.end method
+
 ; >> FUNCTION main <<
+.method public static main([Ljava/lang/String;)V
+.throws java/io/IOException
 .limit stack 32
 .limit locals 32
 invokestatic Main/myRead()I
+putstatic Main/x I
 invokestatic Main/myRead()I
+putstatic Main/y I
 getstatic Main/x I
 getstatic Main/y I
+invokestatic Main/max(II)I
+return
+.end method
+
 ; >> READ METHOD <<
 .method public static myRead()I
 .throws java/io/IOException
